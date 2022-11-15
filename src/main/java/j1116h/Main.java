@@ -19,8 +19,8 @@ public class Main extends HttpServlet {
 		String sw = request.getParameter("sw")==null ? "main" : request.getParameter("sw");
 		
 		String product = request.getParameter("product")==null ? "" : request.getParameter("product");
-		int price = request.getParameter("price")==null ? 0 : Integer.parseInt(request.getParameter("price"));
-		int su = request.getParameter("su")==null ? 0 : Integer.parseInt(request.getParameter("su"));
+		int price = (request.getParameter("price").equals("") || request.getParameter("price")==null) ? 0 : Integer.parseInt(request.getParameter("price"));
+		int su = request.getParameter("su").equals("") ? 0 : Integer.parseInt(request.getParameter("su"));
 		int kumaek = price * su;
 		
 		ProductVO vo = new ProductVO(product, price, su, kumaek, sw);

@@ -1,3 +1,4 @@
+<%@ page import="j1116h.ProductVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
   ProductVO vo = (ProductVO) request.getAttribute("vo");
@@ -8,7 +9,7 @@
   <meta charset="UTF-8">
   <title>input.jsp</title>
   <%@ include file="../../include/bs4.jsp" %>
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/study/1116h/product.css">
+  <link rel="stylesheet" href="<%=request.getContextPath()%>/study/1116h/product.css">
 </head>
 <body>
 <div class="container">
@@ -21,8 +22,7 @@
   <h2 class="text-center">판매상품 등록</h2>
   <hr/>
   <div>
-    <%-- <form name="myform" method="post" action="${pageContext.request.contextPath}/j1116h/input"> --%>
-    <form name="myform" method="post" action="${pageContext.request.contextPath}/j1116h/Main">
+    <form name="myform" method="post" action="<%=request.getContextPath()%>/j1116h/Main">
       <div>
         품명 : <input type="text" name="product" id="product" value="냉장고" class="form-control mb-3"/>
       </div>

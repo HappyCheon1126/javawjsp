@@ -1,3 +1,4 @@
+<%@ page import="j1116h.ProductVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
   ProductVO vo = (ProductVO) request.getAttribute("vo");
@@ -8,7 +9,7 @@
   <meta charset="UTF-8">
   <title>list.jsp</title>
   <%@ include file="../../include/bs4.jsp" %>
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/study/1116h/product.css">
+  <link rel="stylesheet" href="<%=request.getContextPath()%>/study/1116h/product.css">
 </head>
 <body>
 <!-- 헤더영역('메뉴/로고' 를 표시한다. -->
@@ -21,16 +22,16 @@
   <h2>상품 판매 결과 화면</h2>
   <hr/>
   <div>
-      품명 : <input type="text" name="product" id="product" value="${vo.product}" readonly class="form-control mb-3"/>
+      품명 : <input type="text" name="product" id="product" value="<%=vo.getProduct()%>" readonly class="form-control mb-3"/>
       </div>
       <div>
-      단가 : <input type="text" name="price" id="price" value="${vo.price}" readonly class="form-control mb-3"/>
+      단가 : <input type="text" name="price" id="price" value="<%=vo.getPrice()%>" readonly class="form-control mb-3"/>
       </div>
       <div>
-      수량 : <input type="text" name="su" id="su" value="${vo.su}" readonly class="form-control mb-3"/>
+      수량 : <input type="text" name="su" id="su" value="<%=vo.getSu()%>" readonly class="form-control mb-3"/>
       </div>
       <div>
-      금액 : <input type="text" name="su" id="su" value="${vo.kumaek}" readonly class="form-control mb-3"/>
+      금액 : <input type="text" name="su" id="su" value="<%=vo.getKumaek()%>" readonly class="form-control mb-3"/>
       </div>
   <hr/>
   <p>좋은 시간 되세요</p>
