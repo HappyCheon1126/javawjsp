@@ -32,6 +32,7 @@
 	  	  <div class="col-6"><input type="reset" value="다시입력" class="btn btn-warning form-control"/></div>
 	  	</div>
   	</div>
+  	<input type="hidden" name="hostIp" value="<%=request.getRemoteAddr()%>"/>
   </form>
 </div>
 <p><br/></p>

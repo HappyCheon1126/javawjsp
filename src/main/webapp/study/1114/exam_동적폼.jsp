@@ -30,8 +30,8 @@
     // 앞의 입력폼에서 테이블처리로 변경해 봤다.
     function inputBox() {
       idx++;
-      newText = demo.textContent;
-      newText += '<div id="proTxt'+idx+'" class="mb-3"><table class="table table-striped" width="100%"><tr>';
+      //newText = demo.textContent;
+      newText = '<div id="proTxt'+idx+'" class="mb-3"><table class="table table-striped" width="100%"><tr>';
       newText += '<td><input type="text" name="product" id="product'+idx+'" size="7" /></td>';
       newText += '<td><input type="text" name="price" id="price'+idx+'" size="3" /></td>';
       newText += '<td><input type="text" name="su" id="su'+idx+'" value="1" size="2" /></td>';
