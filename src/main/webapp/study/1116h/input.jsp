@@ -1,8 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
-  String sw = "";
   ProductVO vo = (ProductVO) request.getAttribute("vo");
-  if(vo != null) vo.getSw();
 %>
 <!DOCTYPE html>
 <html>
@@ -23,7 +21,8 @@
   <h2 class="text-center">판매상품 등록</h2>
   <hr/>
   <div>
-    <form name="myform" method="post" action="${pageContext.request.contextPath}/j1116h/input">
+    <%-- <form name="myform" method="post" action="${pageContext.request.contextPath}/j1116h/input"> --%>
+    <form name="myform" method="post" action="${pageContext.request.contextPath}/j1116h/Main">
       <div>
         품명 : <input type="text" name="product" id="product" value="냉장고" class="form-control mb-3"/>
       </div>

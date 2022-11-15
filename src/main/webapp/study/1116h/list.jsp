@@ -1,8 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
-  String sw = "";
   ProductVO vo = (ProductVO) request.getAttribute("vo");
-  if(vo != null) vo.getSw();
 %>
 <!DOCTYPE html>
 <html>
