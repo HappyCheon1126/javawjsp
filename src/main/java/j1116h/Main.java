@@ -25,7 +25,7 @@ public class Main extends HttpServlet {
 		
 		ProductVO vo = new ProductVO(product, price, su, kumaek, sw);
 		
-		String viewPage = "/study/1116h";
+		String viewPage = "/study/1116h2";
 		if(sw.equals("input")) viewPage += "/input.jsp";
 		else if(sw.equals("list")) viewPage += "/list.jsp";
 		else if(sw.equals("photo")) viewPage += "/photo.jsp";
