@@ -27,6 +27,6 @@ public class Test1 extends HttpServlet {
 		out.print("<p>성명 : " + name + "</p>");
 		out.print("<p>성별 : " + gender + "</p>");
 		out.print("<p>직업 : " + job + "</p>");
-		out.print("<p><a href='"+request.getContextPath()+"/study/1117/filter/test1.jsp'>돌아가기</a></p>");
+		out.print("<p><a href='"+request.getContextPath()+"/study/1117_filter/filter/test1.jsp'>돌아가기</a></p>");
 	}
 }
