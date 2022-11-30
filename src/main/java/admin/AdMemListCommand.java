@@ -1,4 +1,4 @@
-package member;
+package admin;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -6,23 +6,19 @@ import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-public class MemListCommand implements MemberInterface {
+import member.MemberVO;
+
+public class AdMemListCommand implements AdminInterface {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String mid = request.getParameter("mid")==null ? "" : request.getParameter("mid");
-		
-		HttpSession session = request.getSession();
-		int level = (int) session.getAttribute("sLevel");
-		
-		MemberDAO dao = new MemberDAO();
+		AdminDAO dao = new AdminDAO();
 		
 		// 페이징처리 준비 시작
 		int pag = request.getParameter("pag")==null ? 1 : Integer.parseInt(request.getParameter("pag"));
 		int pageSize = 5;
-		int totRecCnt = dao.totRecCnt(mid, level);
+		int totRecCnt = dao.totRecCnt("");
 		int totPage = (totRecCnt % pageSize)==0 ? totRecCnt / pageSize : (totRecCnt / pageSize) + 1;
 		int startIndexNo = (pag - 1) * pageSize;
 		int curScrStartNo = totRecCnt - startIndexNo;
@@ -32,7 +28,7 @@ public class MemListCommand implements MemberInterface {
 		int curBlock = (pag - 1) / blockSize;
 		int lastBlock = (totPage - 1) / blockSize;
 		
-		ArrayList<MemberVO> vos = dao.getMemList(startIndexNo, pageSize, mid, level);
+		ArrayList<MemberVO> vos = dao.getMemList(startIndexNo, pageSize);
 		
 		request.setAttribute("vos", vos);
 		request.setAttribute("pag", pag);
@@ -41,8 +37,6 @@ public class MemListCommand implements MemberInterface {
 		request.setAttribute("blockSize", blockSize);
 		request.setAttribute("curBlock", curBlock);
 		request.setAttribute("lastBlock", lastBlock);
-		
-		request.setAttribute("mid", mid);
 	}
 
 }

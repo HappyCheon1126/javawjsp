@@ -38,7 +38,7 @@ public class MemUpdateCommand implements MemberInterface {
 		request.setAttribute("detailAddress", address[2]);
 		request.setAttribute("extraAddress", address[3]);
 		
-		// 취미 분리("/")
+		// 취미는 통째로 넘긴다.
 		request.setAttribute("hobby", vo.getHobby());
 		
 		// 생일(년-월-일) : 앞에서부터 10자리를 넘긴다.

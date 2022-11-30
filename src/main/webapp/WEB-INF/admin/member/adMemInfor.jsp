@@ -10,7 +10,6 @@
   <jsp:include page="/include/bs4.jsp"></jsp:include>
 </head>
 <body>
-<jsp:include page="/include/header.jsp" />
 <p><br/></p>
 <div class="container">
   <h2>회원 정보 상세 보기</h2>
@@ -38,10 +37,9 @@
 	    <tr><td>공개유무: ${vo.userInfor}</td></tr>
     </c:if>
     <tr><td>사진 : <img src="${ctp}/data/member/${vo.photo}" width="150px"/></td></tr>
-    <tr><td><button type="button" class="btn btn-secondary" onclick="location.href='${ctp}/memList.mem?pag=${pag}';">돌아가기</button></td></tr>
+    <tr><td><button type="button" class="btn btn-secondary" onclick="location.href='${ctp}/adMemList.ad?pag=${pag}';">돌아가기</button></td></tr>
   </table>
 </div>
 <p><br/></p>
-<jsp:include page="/include/footer.jsp" />
 </body>
 </html>

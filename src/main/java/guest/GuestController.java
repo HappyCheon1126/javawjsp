@@ -20,7 +20,7 @@ public class GuestController extends HttpServlet {
 		
 		String uri = request.getRequestURI();
 		String com = uri.substring(uri.lastIndexOf("/"), uri.lastIndexOf("."));
-		
+
 		if(com.equals("/guList")) {
 			command = new GuListCommand();
 			command.execute(request, response);

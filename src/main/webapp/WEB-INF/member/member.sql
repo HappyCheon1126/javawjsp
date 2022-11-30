@@ -35,3 +35,4 @@ insert into member values (default,'admin','1234','관리맨','관리자',defaul
 
 select * from member;
 
+select count(*) as cnt from member where mid like '%1%';
