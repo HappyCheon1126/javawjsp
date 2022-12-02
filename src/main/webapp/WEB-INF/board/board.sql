@@ -21,6 +21,24 @@ insert into board values (default,'관리맨','게시판 서비스를 시작합�
 
 select * from board;
 
+/* 게시판에 댓글 달기 */
+create table boardReply (
+  idx		int not null auto_increment,	/* 댓글의 고유번호 */
+  boardIdx int not null,							/* 원본글의 고유번호(외래키로 지정) */
+  mid			 varchar(20) not null,			/* 댓글 올린이의 아이디 */
+  nickName varchar(20) not null,			/* 댓글 올린이의 닉네임 */
+  wDate		 datetime default now(),		/* 댓글 올린 날짜 */
+  hostIp	 varchar(50) not null,			/* 댓글올린 PC의 IP */
+  content  text not null,							/* 댓글 내용 */
+  primary key(idx),
+  foreign key(boardIdx) references board(idx)
+  /* on update cascade */
+  /* on delete restrict */
+);
+desc boardReply;
+
+
+
 /* 날짜함수 처리 연습 */
 select now();		-- now() : 오늘 '날짜와 시간'을 보여준다.
 select year(now());		-- year() : '년도' 출력
@@ -78,34 +96,11 @@ select timestampdiff(hour, wDate, now()) from board;
 select *,timestampdiff(hour, wDate, now()) as hour_diff from board;
 select *,datediff(now(), wDate) as day_diff, timestampdiff(hour, wDate, now()) as hour_diff from board;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 select date(now());SELECT TIMESTAMPDIFF(minute, date_format('2022-04-20 01:01', '%Y-%m-%d %H:%i'), date_format('2022-12-31 23:59', '%Y-%m-%d %H:%i')) AS time_diff;
 SELECT TIMESTAMPDIFF(hour, date_format('2022-11-30 13:01', '%Y-%m-%d %H:%i'), date_format(now(), '%Y-%m-%d %H:%i')) AS time_diff;
 SELECT *,TIMESTAMPDIFF(hour, date_format(wDate, '%Y-%m-%d %H:%i'), date_format(now(), '%Y-%m-%d %H:%i')) AS time_diff from board;		-- date() : 일 출력
 
 
-
-
-
-
-
-
-
-
-
-
-SELECT TIMESTAMPDIFF(minute, date_format('2022-04-20 01:01', '%Y-%m-%d %H:%i'), date_format('2022-12-31 23:59', '%Y-%m-%d %H:%i')) AS time_diff;
-SELECT TIMESTAMPDIFF(hour, date_format('2022-11-30 13:01', '%Y-%m-%d %H:%i'), date_format(now(), '%Y-%m-%d %H:%i')) AS time_diff;
-SELECT *,TIMESTAMPDIFF(hour, date_format(wDate, '%Y-%m-%d %H:%i'), date_format(now(), '%Y-%m-%d %H:%i')) AS time_diff from board;
+/*  이전글 다음글 체크 */
+select * from board where idx < 5 order by idx desc limit 1;
+select * from board where idx > 5 limit 1;

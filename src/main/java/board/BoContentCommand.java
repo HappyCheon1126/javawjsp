@@ -16,6 +16,9 @@ public class BoContentCommand implements BoardInterface {
 		int idx = request.getParameter("idx")==null ? 0 : Integer.parseInt(request.getParameter("idx"));
 		int pageSize = request.getParameter("pageSize")==null ? 0 : Integer.parseInt(request.getParameter("pageSize"));
 		int pag = request.getParameter("pag")==null ? 0 : Integer.parseInt(request.getParameter("pag"));
+		String flag = request.getParameter("flag")==null ? "" : request.getParameter("flag");
+		String search = request.getParameter("search")==null ? "" : request.getParameter("search");
+		String searchString = request.getParameter("searchString")==null ? "" : request.getParameter("searchString");
 		
 		BoardDAO dao = new BoardDAO();
 		
@@ -40,6 +43,9 @@ public class BoContentCommand implements BoardInterface {
 		request.setAttribute("pageSize", pageSize);
 		request.setAttribute("pag", pag);
 		request.setAttribute("vo", vo);
+		request.setAttribute("flag", flag);
+		request.setAttribute("search", search);
+		request.setAttribute("searchString", searchString);
 		
   	// 해당글에 좋아요 버튼을 클릭하였었다면 '좋아요세션'에 아이디를 저장시켜두었기에 찾아서 있다면 sSw값을 1로 보내어 하트색을 빨강색으로 변경유지하게한다.
 		ArrayList<String> goodIdx = (ArrayList) session.getAttribute("sGoodIdx");
@@ -53,6 +59,16 @@ public class BoContentCommand implements BoardInterface {
 		else {
 			session.setAttribute("sSw", "0");
 		}
+		
+		// 이전글과 다음글 처리
+		BoardVO preVo  = dao.getPreNextSearch("pre", idx);
+		BoardVO nextVo = dao.getPreNextSearch("next", idx);
+		request.setAttribute("preVo", preVo);
+		request.setAttribute("nextVo", nextVo);
+		
+		// 입력된 댓글 가져오기
+		ArrayList<BoardReplyVO> replyVos = dao.getBoReply(idx);
+		request.setAttribute("replyVos", replyVos);
 	}
 
 }
