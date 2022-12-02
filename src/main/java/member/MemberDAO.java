@@ -143,6 +143,7 @@ public class MemberDAO {
 		return res;
 	}
 
+	// 회원자료 전체 검색
 	public ArrayList<MemberVO> getMemList(int startIndexNo, int pageSize, String mid, int level) {
 		ArrayList<MemberVO> vos = new ArrayList<>();
 		try {

@@ -82,7 +82,64 @@
     	});
     }
     
+    function idCheck4() {
+    	let mid = $("#mid").val();
+    	
+    	if(mid.trim() == "") {
+    		alert("아이디를 입력하세요.");
+    		$("#mid").focus();
+    		return false;
+    	}
+    	
+    	$.ajax({
+    		type : "post",
+    		url  : "${ctp}/idSearchTest4",
+    		data : {mid: mid},
+    		success: function(res) {
+    			res = res.substring(res.indexOf("[")+1,res.lastIndexOf("]"));
+    			$("#demo").html(res);
+    			let str = res.split("/");
+    			//$("#tMid").html(str[0]);
+    			$("#tMid").html(res.substring(res.indexOf("mid=")+4,res.indexOf(",",res.indexOf("mid="))));
+    			$("#name").html(res.substring(res.indexOf("name=")+5,res.indexOf(",",res.indexOf("name="))));
+    			$("#nickName").html(res.substring(res.indexOf("nickName=")+9,res.indexOf(",",res.indexOf("nickName="))));
+    			$("#gender").html(res.substring(res.indexOf("gender=")+7,res.indexOf(",",res.indexOf("gender="))));
+    			$("#point").html(res.substring(res.indexOf("point=")+6,res.indexOf(",",res.indexOf("point="))));
+    		},
+    		error: function() {
+    			alert("전송 실패~~~");
+    		} 
+    	});
+    }
     
+    function idCheck5() {
+    	let mid = $("#mid").val();
+    	
+    	if(mid.trim() == "") {
+    		alert("아이디를 입력하세요.");
+    		$("#mid").focus();
+    		return false;
+    	}
+    	
+    	$.ajax({
+    		type : "post",
+    		url  : "${ctp}/idSearchTest5",
+    		data : {mid: mid},
+    		success: function(res) {
+    			$("#demo").html(res);
+    			let jsonRes = JSON.parse(res);	// json형식으로 넘어온 자료를 다시 파싱과정을 거쳐서 일반 문자열로 변환시켜준다.
+    			
+    			$("#tMid").html(jsonRes.mid);
+    			$("#name").html(jsonRes.name);
+    			$("#nickName").html(jsonRes.nickName);
+    			$("#gender").html(jsonRes.gender);
+    			$("#point").html(jsonRes.point);
+    		},
+    		error: function() {
+    			alert("전송 실패~~~");
+    		} 
+    	});
+    }
   </script>
 </head>
 <body>
@@ -95,7 +152,9 @@
     아이디 : <input type="text" name="mid" id="mid" /> &nbsp;
     <input type="button" value="아이디일반검색1" onclick="idCheck()" class="btn btn-info"/>&nbsp;
     <input type="button" value="아이디검색2" onclick="idCheck2()" class="btn btn-success"/>&nbsp;
-    <input type="button" value="아이디검색3" onclick="idCheck3()" class="btn btn-primary"/>
+    <input type="button" value="아이디검색3" onclick="idCheck3()" class="btn btn-primary"/>&nbsp;
+    <input type="button" value="아이디검색4" onclick="idCheck4()" class="btn btn-primary"/>&nbsp;
+    <input type="button" value="아이디검색5" onclick="idCheck5()" class="btn btn-primary"/>
     <br/>
     <div>출력결과 : <span id="demo">${name}</span></div>
     <hr/>

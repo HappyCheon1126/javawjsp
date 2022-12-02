@@ -1,4 +1,4 @@
-package study2;
+package board;
 
 import java.io.IOException;
 
@@ -11,12 +11,12 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 @SuppressWarnings("serial")
-@WebServlet("*.st")
-public class StudyController extends HttpServlet {
+@WebServlet("*.bo")
+public class BoardController extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		StudyInterface command = null;
-		String viewPage = "/WEB-INF/study2";
+		BoardInterface command = null;
+		String viewPage = "/WEB-INF/board";
 		
 		String uri = request.getRequestURI();
 		String com = uri.substring(uri.lastIndexOf("/"), uri.lastIndexOf("."));
@@ -30,47 +30,37 @@ public class StudyController extends HttpServlet {
 			dispatcher.forward(request, response);
 		}
 		
-		else if(com.equals("/pass")) {
-			viewPage += "/password/pass.jsp";
-		}
-		else if(com.equals("/passOk1")) {
-			command = new PassOkCommand();
+		else if(com.equals("/boList")) {
+			command = new BoListCommand();
 			command.execute(request, response);
-			viewPage += "/password/pass.jsp";
+			viewPage += "/boList.jsp";
 		}
-		else if(com.equals("/passOk2")) {
-			command = new PassOk2Command();
+		else if(com.equals("/boInput")) {
+			command = new BoInputCommand();
 			command.execute(request, response);
-			viewPage += "/password/passOk2.jsp";
+			viewPage += "/boInput.jsp";
 		}
-		else if(com.equals("/ajax6")) {
-			viewPage += "/ajax/ajax6.jsp";
-		}
-		else if(com.equals("/userList")) {
-			command = new UserListCommand();
+		else if(com.equals("/boInputOk")) {
+			command = new BoInputOkCommand();
 			command.execute(request, response);
-			viewPage += "/ajax/userList.jsp";
+			viewPage = "/include/message.jsp";
 		}
-		else if(com.equals("/userSearch")) {
-			command = new UserSearchCommand();
+		else if(com.equals("/boContent")) {
+			command = new BoContentCommand();
 			command.execute(request, response);
-			return;
+			viewPage += "/boContent.jsp";
 		}
-		else if(com.equals("/userDel")) {
-			command = new UserDelCommand();
+		else if(com.equals("/boGood")) {
+			command = new BoGoodCommand();
 			command.execute(request, response);
 			return;
 		}
-		else if(com.equals("/userInput")) {
-			command = new UserInputCommand();
+		else if(com.equals("/boGoodPlusMinus")) {
+			command = new BoGoodPlusMinusCommand();
 			command.execute(request, response);
 			return;
 		}
-		else if(com.equals("/userUpdate")) {
-			command = new UserUpdateCommand();
-			command.execute(request, response);
-			return;
-		}
+		
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);

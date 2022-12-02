@@ -27,7 +27,7 @@
       </li>
       <c:if test="${level <= 4}">
 	      <li class="nav-item">
-	        <a class="nav-link" href="#">BOARD</a>
+	        <a class="nav-link" href="${ctp}/boList.bo">BOARD</a>
 	      </li>
 	      <c:if test="${level != 1}">
 		      <li class="nav-item">
@@ -37,7 +37,7 @@
 		        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">STUDY</a>
 		        <div class="dropdown-menu">
 				      <a class="dropdown-item" href="${ctp}/pass.st">비밀번호암호화</a>
-				      <a class="dropdown-item" href="${ctp}/ajax1.st">AJax연습1</a>
+				      <a class="dropdown-item" href="${ctp}/ajax6.st">AJax연습1</a>
 				      <a class="dropdown-item" href="${ctp}/userList.st">AJax연습2</a>
 				    </div>
 		      </li>
