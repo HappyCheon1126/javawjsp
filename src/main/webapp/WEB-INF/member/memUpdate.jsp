@@ -100,7 +100,7 @@
   		
   		// 전송전에 파일에 관한 사항체크...(회원사진의 내역이 비었으면 noimage를 hidden필드인 photo필드에 담아서 전송한다.)
   		if(fName.trim() == "") {
-  			myform.photo.value = "noimage"
+  			myform.photo.value = "${vo.photo}";
 				submitFlag = 1;
   		}
   		else {
@@ -164,7 +164,7 @@
 <jsp:include page="/include/header.jsp" />
 <p><br/></p>
 <div class="container" style="padding:30px">
-  <form name="myform" method="post" action="${ctp}/memUpdateOk.mem" class="was-validated">
+  <form name="myform" method="post" action="${ctp}/memUpdateOk.mem" class="was-validated" enctype="multipart/form-data">
     <h2>회 원 정 보 수 정</h2>
     <br/>
     <div class="form-group">
@@ -345,7 +345,7 @@
     <button type="reset" class="btn btn-secondary">다시작성</button> &nbsp;
     <button type="button" class="btn btn-secondary" onclick="location.href='${ctp}/memMain.mem';">돌아가기</button>
     
-    <input type="hidden" name="photo"/>
+    <input type="hidden" name="photo" value="${vo.photo}"/>
     <input type="hidden" name="tel"/>
     <input type="hidden" name="email"/>
   </form>

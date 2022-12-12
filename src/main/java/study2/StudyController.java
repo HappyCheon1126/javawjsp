@@ -71,6 +71,53 @@ public class StudyController extends HttpServlet {
 			command.execute(request, response);
 			return;
 		}
+		else if(com.equals("/upLoad1")) {
+			viewPage += "/pdstest/upLoad1.jsp";
+		}
+		else if(com.equals("/upLoad1Ok")) {
+			command = new UpLoad1OkCommand();
+			command.execute(request, response);
+			viewPage = "/include/message.jsp";
+		}
+		else if(com.equals("/upLoad2")) {
+			viewPage += "/pdstest/upLoad2.jsp";
+		}
+		else if(com.equals("/upLoad2Ok")) {
+			command = new UpLoad2OkCommand();
+			command.execute(request, response);
+			viewPage = "/include/message.jsp";
+		}
+		else if(com.equals("/upLoad3")) {
+			viewPage += "/pdstest/upLoad3.jsp";
+		}
+		else if(com.equals("/upLoad4")) {
+			viewPage += "/pdstest/upLoad4.jsp";
+		}
+		else if(com.equals("/downLoad")) {
+			command = new DownLoadCommand();
+			command.execute(request, response);
+			viewPage += "/pdstest/downLoad.jsp";
+		}
+		else if(com.equals("/javaDown")) {
+			command = new JavaDownCommand();
+			command.execute(request, response);
+			return;
+		}
+		else if(com.equals("/fileDelete")) {
+			command = new FileDeleteCommand();
+			command.execute(request, response);
+			return;
+		}
+		else if(com.equals("/calendar1")) {
+			command = new Calendar1Command();
+			command.execute(request, response);
+			viewPage += "/calendar/calendar1.jsp";
+		}
+		else if(com.equals("/calendar2")) {
+			command = new Calendar2Command();
+			command.execute(request, response);
+			viewPage += "/calendar/calendar2.jsp";
+		}
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);

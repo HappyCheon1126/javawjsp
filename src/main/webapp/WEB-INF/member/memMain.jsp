@@ -13,6 +13,12 @@
     .viewCheck {
       color: red;
     }
+    #memberInfo1 {
+      float: left;
+    }
+    #memberInfo3 {
+      clear: both;
+    }
   </style>
 </head>
 <body>
@@ -21,13 +27,19 @@
 <div class="container">
   <h2>회 원 전 용 방</h2>
   <hr/>
-  <p><font color="blue"><b>${sNickName}</b></font>님 로그인 중이십니다.</p>
-  <p>현재 <font color="blue"><b>${strLevel}</b></font> 등급 이십니다.</p>
-  <p>누적 포인트 : <span class="viewCheck">${point}</span></p>
-  <p>최종 접속일 : <span class="viewCheck">${fn:substring(lastDate,0,fn:length(lastDate)-2)}</span></p>
-  <p>총 방문횟수 : <span class="viewCheck">${visitCnt}</span></p>
-  <p>오늘 방문횟수 : <span class="viewCheck">${todayCnt}</span></p>
-  <hr/>
+  <div id="memberInfo1" class="mr-5">
+	  <p><font color="blue"><b>${sNickName}</b></font>님 로그인 중이십니다.</p>
+	  <p>현재 <font color="blue"><b>${strLevel}</b></font> 등급 이십니다.</p>
+	  <p>누적 포인트 : <span class="viewCheck">${point}</span></p>
+	  <p>최종 접속일 : <span class="viewCheck">${fn:substring(lastDate,0,fn:length(lastDate)-2)}</span></p>
+	  <p>총 방문횟수 : <span class="viewCheck">${visitCnt}</span></p>
+	  <p>오늘 방문횟수 : <span class="viewCheck">${todayCnt}</span></p>
+  </div>
+  <div id="memberInfo2">
+    <h3>회원사진</h3>
+	  <p><img src="${ctp}/data/member/${photo}" width="200px" /></p>
+  </div>
+  <hr id="memberInfo3" />
   <h4>활동내역</h4>
   <p>방명록에 올린글수 : <span class="viewCheck">${guestCnt}</span></p>
   <p>게시판에 올린글수 : </p>
