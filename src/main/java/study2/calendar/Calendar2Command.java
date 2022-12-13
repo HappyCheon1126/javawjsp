@@ -1,15 +1,15 @@
-package schedule;
+package study2.calendar;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Calendar;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-public class ScheduleCommand implements ScheduleInterface {
+import study2.StudyInterface;
+
+public class Calendar2Command implements StudyInterface {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -87,28 +87,6 @@ public class ScheduleCommand implements ScheduleInterface {
 		request.setAttribute("nextMonth", nextMonth);
 		request.setAttribute("preLastDay", preLastDay);
 		request.setAttribute("nextStartWeek", nextStartWeek);
-		
-		/* 스케줄에 등록되어 있는 해당월의 일정들을 가져온다. */
-		// 자신의 스케줄만 가져와야 하기에, 로그인된 회원의 아이디와 일치한 자료만 가져온다.
-		HttpSession session = request.getSession();
-		String mid = (String) session.getAttribute("sMid");
-		
-		// 해당월을 가져오기위한 편집처리(2022-12)
-		
-		// 2023-1  -> 2023-01
-		String ym = "";
-		if((mm + 1) < 10) {
-			ym = yy + "-0" + (mm + 1);
-		}
-		else {
-			ym = yy + "-" + (mm + 1);
-		}
-		
-		ScheduleDAO dao = new ScheduleDAO();
-		ArrayList<ScheduleVO> vos = dao.getScMenu(mid, ym, 0);
-		
-		request.setAttribute("vos", vos);
-		//System.out.println("vos;" + vos);
 	}
 
 }

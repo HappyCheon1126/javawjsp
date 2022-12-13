@@ -25,7 +25,7 @@ public class ScheduleDAO {
 		ArrayList<ScheduleVO> vos = new ArrayList<>();
 		try {
 			if(sw == 0) {  // 초기화면에서의 호출인 경우
-				System.out.println("ymd : " + ymd);
+				//System.out.println("ymd : " + ymd);
 				sql = "select * from schedule where mid=? and date_format(sDate,'%Y-%m')=? order by sDate,part";
 			}
 			else {

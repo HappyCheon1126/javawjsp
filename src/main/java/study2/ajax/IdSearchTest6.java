@@ -27,7 +27,7 @@ public class IdSearchTest6 extends HttpServlet {
 		
 		MemberVO vo = dao.getLoginCheck(mid);
 		
-		// System.out.println("vo : " + vo);
+		//System.out.println("vo : " + vo);
 		
 		// json방식으로 자료를 담기위해 컬렉션프레임워크의 HashMap를 사용했다.
 		HashMap<String, String> map = new HashMap<>();
