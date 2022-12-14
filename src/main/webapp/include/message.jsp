@@ -50,6 +50,8 @@
     else if(msg == "pdsInputNo") msg = "자료실에 파일 업로드 실패~~";
     else if(msg == "pdsDeleteOk") msg = "자료파일 삭제 완료!";
     else if(msg == "pdsDeleteNo") msg = "자료파일 삭제 실패~~";
+    else if(msg == "photoViewOk") msg = "그림파일이 업로드 되었습니다.";
+    else if(msg == "photoViewNo") msg = "그림파일이 업로드 실패~~";
     
     alert(msg);
     if(url != "") location.href = url;

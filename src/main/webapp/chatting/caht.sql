@@ -8,7 +8,9 @@ create table chat(
   avatar	 char(1)   not null default '1'			/* 아바타 */
 );
 
+drop table chat;
+
 insert into chat values (default, '홍장군', '안녕!!!', default, default);
 insert into chat values (default, '김장미', '반갑다', default, '2');
 
-select * from chat order by idx desc;
+select * from chat order by idx;

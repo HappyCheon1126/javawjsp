@@ -12,6 +12,10 @@ import javax.servlet.http.HttpSession;
 
 import study2.calendar.Calendar1Command;
 import study2.calendar.Calendar2Command;
+import study2.crime.StCrimeDeleteCommand;
+import study2.crime.StCrimeListCommand;
+import study2.crime.StCrimeSaveCommand;
+import study2.crime.StCrimeTotalListCommand;
 import study2.password.PassOk2Command;
 import study2.password.PassOkCommand;
 import study2.pdstest.DownLoadCommand;
@@ -24,6 +28,10 @@ import study2.pdstest.UserInputCommand;
 import study2.pdstest.UserListCommand;
 import study2.pdstest.UserSearchCommand;
 import study2.pdstest.UserUpdateCommand;
+import study2.photoView.PhotoViewDeleteCommand;
+import study2.photoView.PhotoViewListCommand;
+import study2.photoView.photoViewOk2Command;
+import study2.photoView.photoViewOkCommand;
 
 @SuppressWarnings("serial")
 @WebServlet("*.st")
@@ -158,6 +166,32 @@ public class StudyController extends HttpServlet {
 			command = new StCrimeTotalListCommand();
 			command.execute(request, response);
 			viewPage += "/api/crimeApi.jsp";
+		}
+		else if(com.equals("/photoView")) {
+			viewPage += "/photoView/photoView.jsp";
+		}
+		else if(com.equals("/photoViewOk")) {
+			command = new photoViewOkCommand();
+			command.execute(request, response);
+			viewPage = "/include/message.jsp";
+		}
+		else if(com.equals("/photoView2")) {
+			viewPage += "/photoView/photoView2.jsp";
+		}
+		else if(com.equals("/photoViewOk2")) {
+			command = new photoViewOk2Command();
+			command.execute(request, response);
+			viewPage = "/include/message.jsp";
+		}
+		else if(com.equals("/photoViewList")) {
+			command = new PhotoViewListCommand();
+			command.execute(request, response);
+			return;
+		}
+		else if(com.equals("/photoViewDelete")) {
+			command = new PhotoViewDeleteCommand();
+			command.execute(request, response);
+			return;
 		}
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);

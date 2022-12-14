@@ -22,9 +22,15 @@ public class ChatDAO {
 
 	// 채팅메세지 내용 가져오기..
 	public ArrayList<ChatVO> getChatList(int su) {
+		//System.out.println("su : " + su);
 		ArrayList<ChatVO> vos = new ArrayList<>();
 		try {
-			sql = "select * from chat where idx > (select max(idx) - ? from chat) order by idx limit 50";
+			if(su == 10) {
+			  sql = "select * from chat where idx > (select max(idx) - ? from chat) order by idx";
+			}
+			else {
+				sql = "select * from chat where idx > ? order by idx";
+			}
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, su);
 			rs = pstmt.executeQuery();

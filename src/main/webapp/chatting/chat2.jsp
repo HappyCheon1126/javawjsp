@@ -67,8 +67,9 @@
     // 페이지를 주기적으로 다시 로딩시켜준다.
     function getRepeatChat() {
     	setInterval(function() {
+    		removeFunc();
     		chatListFunction(lastIdx);
-    	}, 2000);
+    	}, 3000);
     }
     
     // 메세지 내용을 출력하기위한 함수
@@ -86,14 +87,17 @@
     				addChar(res[i][1].value,res[i][2].value,res[i][3].value,res[i][4].value);
     			}
     			lastIdx = Number(parsed.last);
-    			//console.log("lastIdx : " + lastIdx);
     		}
     	});
     }
     
+    function removeFunc() {
+    	$("div").remove(".chatLog");
+    }
+    
     // 앞에서 가져온 내용을 출력시킬 준비처리..
     function addChar(nickName, content, cDate, avatar) {
-    	$("#chatList").append("<div class='row'>"
+    	$("#chatList").append("<div class='row border-top pt-4 pb-4 chatLog'>"
         		+ "<div class='col-lg-12'>"
         		+ "<div class='media'>"
         		+ "<a class='pull-left' href='#'>"
@@ -106,7 +110,7 @@
         		+ "</div>"
         		+ "</div>"
         		+ "</div>"
-    	+ "</div><hr/>");
+    	+ "</div>");
     	$("#chatList").scrollTop($("#chatList")[0].scrollHeight);  // 스크롤바를 강제로 마지막에 위치한다.
     }
     
@@ -172,7 +176,7 @@
                   <input type="radio" name="avatar" value="3" checked/><img src="./images/avatar3.png" width="22px" class="img-circle"/> &nbsp;
                   <input type="radio" name="avatar" value="4" checked/><img src="./images/avatar4.png" width="22px" class="img-circle"/> &nbsp;
                   <input type="radio" name="avatar" value="5" checked/><img src="./images/avatar5.png" width="22px" class="img-circle"/> &nbsp;
-                  <input type="radio" name="avatar" value="6" checked/><img src="./images/avatar6.png" width="22px" class="img-circle"/>
+                  <input type="radio" name="avatar" value="6" checked/><img src="./images/avatar6.png" width="22px" class="img-circle"/> &nbsp;
                 </div>
               </div>
               <div class="row" style="height:90px;">

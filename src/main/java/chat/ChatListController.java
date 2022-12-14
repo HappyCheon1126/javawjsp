@@ -30,10 +30,11 @@ public class ChatListController extends HttpServlet {
 		}
 	}
 
-	// 2번째 이후부터 메세지 내용을 출력처리
+	// 2번째 이후부터 메세지 내용을 출력처리(마지막 입력된 게시물 idx번호로 호출)
 	private String getListIdx(String idx) {
 		ChatDAO dao = new ChatDAO();
-		ArrayList<ChatVO> vos = dao.getChatList(Integer.parseInt(idx));	// 마지막자료를 기준으로 처리...
+		ArrayList<ChatVO> vos = dao.getChatList(Integer.parseInt(idx));	// 마지막자료를 기준으로 처리.(마지막 자료 이후것을 가져오게한다.)
+		//System.out.println("idx : " + idx + " , vos.size() : " + vos.size());
 		ChatVO vo = new ChatVO();
 		
 		StringBuffer res = new StringBuffer();
@@ -47,7 +48,12 @@ public class ChatListController extends HttpServlet {
 			res.append("{\"value\":\""+vo.getAvatar()+"\"}]");
 			if(i != (vos.size()-1)) res.append(",");
 		}
-		res.append("],\"last\":\""+vos.get(vos.size()-1).getIdx()+"\"}");
+		if(vos.size() != 0) {
+			res.append("],\"last\":\""+vos.get(vos.size()-1).getIdx()+"\"}");
+		}
+		else {
+			res.append("],\"last\":\""+idx+"\"}");
+		}
 		return res.toString();
 	}
 

@@ -51,6 +51,8 @@
 				      <a class="dropdown-item" href="${ctp}/calendar1.st">달력1</a>
 				      <a class="dropdown-item" href="${ctp}/calendar2.st">달력2</a>
 				      <a class="dropdown-item" href="${ctp}/stApi.st">공공데이터연습</a>
+				      <a class="dropdown-item" href="${ctp}/photoView.st">사진미리보기1</a>
+				      <a class="dropdown-item" href="${ctp}/photoView2.st">사진미리보기2</a>
 				    </div>
 		      </li>
 	      </c:if>
